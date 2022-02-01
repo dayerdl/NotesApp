@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">NoteApp</string>
+    <string name="notes_list_screen_title">Notes List</string>
+    <string name="save_button_text">Save</string>
+    <string name="place_holder_title">Title</string>
+    <string name="place_holder_description">Description</string>
+    <string name="message_add_note_error">You need to setup at least a Title for the note</string>
+    <string name="image_url">Image URL</string>
+    <string name="edited_at">edited at:</string>
+    <string name="created_at">created at:</string>
+    <string name="message_empty_list">Hi human 👋 Empty your ram by adding your first note 📝</string>
+</resources>
