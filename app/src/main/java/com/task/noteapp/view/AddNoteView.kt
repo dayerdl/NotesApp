@@ -86,22 +86,20 @@ fun AddNoteView(viewModel: AddNotesViewModel, navController: NavController) {
 @Preview
 @Composable
 fun PreviewAddNote() {
-    val coroutineScope = rememberCoroutineScope()
     val cache = NotesCache(LocalContext.current)
     val repo = NotesRepository(cache)
     val navController = rememberNavController()
-    val viewModel = AddNotesViewModel(repo, coroutineScope.coroutineContext)
+    val viewModel = AddNotesViewModel(repo)
     AddNoteView(viewModel, navController)
 }
 
 @Preview(showBackground = false, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun PreviewAddNoteDarkMode() {
-    val coroutineScope = rememberCoroutineScope()
     val cache = NotesCache(LocalContext.current)
     val repo = NotesRepository(cache)
     val navController = rememberNavController()
-    val viewModel = AddNotesViewModel(repo, coroutineScope.coroutineContext)
+    val viewModel = AddNotesViewModel(repo)
     AddNoteView(viewModel, navController)
 }
 

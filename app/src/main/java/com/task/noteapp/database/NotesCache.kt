@@ -1,10 +1,11 @@
 package com.task.noteapp.database
 
 import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class NotesCache @Inject constructor(private val context: Context) {
+class NotesCache @Inject constructor(@ApplicationContext private val context: Context) {
 
     suspend fun addNote(note: Note) : Int {
         return NotesDataBase.getInstance(context).noteDao().insertNote(note).toInt()

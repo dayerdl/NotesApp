@@ -82,7 +82,6 @@ fun previewNoteRow() {
     val note = Note("Title", "This is the description", "1/01/2021", "10/01/2021")
     val cache = NotesCache(LocalContext.current)
     val repository = NotesRepository(cache)
-    val coroutineScope = rememberCoroutineScope()
-    val viewModel = ListNotesViewModel(repository, coroutineScope.coroutineContext)
+    val viewModel = ListNotesViewModel(repository)
     NoteRowView(note = note, viewModel = viewModel)
 }

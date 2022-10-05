@@ -4,16 +4,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.task.noteapp.database.Note
 import com.task.noteapp.repository.NotesRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.coroutines.CoroutineContext
 
+@HiltViewModel
 class ListNotesViewModel @Inject constructor(
-    private val notesRepository: NotesRepository,
-    private val coroutineContext: CoroutineContext
-) : ViewModel() {
+    private val notesRepository: NotesRepository) : ViewModel() {
 
     fun getNotes(): Flow<State> {
         return flow {
@@ -28,7 +27,7 @@ class ListNotesViewModel @Inject constructor(
     }
 
     fun onDeleteNote(id: Int) {
-        viewModelScope.launch(coroutineContext) {
+        viewModelScope.launch {
             notesRepository.delete(id)
         }
     }

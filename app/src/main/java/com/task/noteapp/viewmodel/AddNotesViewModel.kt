@@ -16,9 +16,7 @@ import kotlin.coroutines.CoroutineContext
 
 @HiltViewModel
 class AddNotesViewModel @Inject constructor(
-    private val repository: NotesRepository,
-    private val ioDispatcher: CoroutineContext
-) : ViewModel() {
+    private val repository: NotesRepository) : ViewModel() {
     val noteId = MutableStateFlow(-1)
     val title = MutableStateFlow("")
     val description = MutableStateFlow("")
@@ -48,7 +46,7 @@ class AddNotesViewModel @Inject constructor(
     }
 
     private fun editNote(id: Int, title: String, description: String, imageUrl: String) {
-        viewModelScope.launch(ioDispatcher) {
+        viewModelScope.launch {
             val currentDate = getCurrentDateFormatted()
             repository.update(
                 id = id,
@@ -64,7 +62,7 @@ class AddNotesViewModel @Inject constructor(
     }
 
     private fun addNote(title: String, description: String, imageUrl: String) {
-        viewModelScope.launch(ioDispatcher) {
+        viewModelScope.launch {
             val currentDate = getCurrentDateFormatted()
             val note = Note(
                 title = title,
@@ -95,7 +93,7 @@ class AddNotesViewModel @Inject constructor(
             description.value = ""
             imageUrl.value = ""
         } else {
-            viewModelScope.launch(ioDispatcher) {
+            viewModelScope.launch {
                 repository.getNotesById(id).filterNotNull().collect { note ->
                     noteId.value = id
                     title.value = note.title
