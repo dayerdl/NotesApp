@@ -3,8 +3,9 @@ package com.task.noteapp.repository
 import com.task.noteapp.database.Note
 import com.task.noteapp.database.NotesCache
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class NotesRepository(private val cache: NotesCache) {
+class NotesRepository @Inject constructor(private val cache: NotesCache) {
 
     suspend fun addNote(note: Note): Int {
         return cache.addNote(note)

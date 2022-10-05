@@ -5,12 +5,12 @@ import androidx.lifecycle.viewModelScope
 import com.task.noteapp.database.Note
 import com.task.noteapp.repository.NotesRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class ListNotesViewModel(
+class ListNotesViewModel @Inject constructor(
     private val notesRepository: NotesRepository,
     private val coroutineContext: CoroutineContext
 ) : ViewModel() {

@@ -75,6 +75,9 @@ fun NotesListView(navController: NavController, viewModel: ListNotesViewModel) {
                             val notes = (state.value as State.Loaded).notes
                             ListOfNotes(notes, navController, viewModel)
                         }
+                        else -> {
+
+                        }
                     }
                 }
 

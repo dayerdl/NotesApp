@@ -4,15 +4,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.task.noteapp.database.Note
 import com.task.noteapp.repository.NotesRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class AddNotesViewModel(
+@HiltViewModel
+class AddNotesViewModel @Inject constructor(
     private val repository: NotesRepository,
     private val ioDispatcher: CoroutineContext
 ) : ViewModel() {
